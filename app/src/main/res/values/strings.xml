@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Quizzle</string>
+    <string name="test_question">My test question?</string>
+    <string name="android_robot_head">Android robot head</string>
+    <string name="true_text">true</string>
+    <string name="false_text">false</string>
+</resources>
