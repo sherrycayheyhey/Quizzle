@@ -16,7 +16,7 @@
 
     <TextView
         android:id="@+id/answer_text_view"
-        android:text="@string/test_question"
+        android:text="@string/test_question_1"
         android:textColor="@android:color/white"
         android:textSize="16sp"
         android:padding="8dp"
@@ -43,5 +43,13 @@
         android:layout_height="wrap_content" />
 
     </LinearLayout>
+
+    <!-- Just like the alt in html, you should add a contentDescription-->
+    <ImageButton
+        android:id="@+id/next_button"
+        android:src="@android:drawable/ic_media_next"
+        android:contentDescription="@string/next_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
 
 </LinearLayout>

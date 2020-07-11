@@ -1,7 +1,19 @@
 <resources>
     <string name="app_name">Quizzle</string>
-    <string name="test_question">My test question?</string>
     <string name="android_robot_head">Android robot head</string>
+
     <string name="true_text">true</string>
     <string name="false_text">false</string>
+
+    <!-- can use special stuff like escape characters \n (newline), \t (tab), and semantic tags <b></b> bold -->
+
+    <string name="correct_answer">That\'s correct</string>
+    <string name="incorrect_answer">That\'s incorrect</string>
+
+    <string name="test_question_1">Android is awesome.</string>
+    <string name="test_question_2">Bismark is the capitol of California.</string>
+    <string name="test_question_3">LEGO is the best toy ever created.</string>
+    <string name="test_question_4">Minecraft is not fun.</string>
+    <string name="next_text">next</string>
+
 </resources>
