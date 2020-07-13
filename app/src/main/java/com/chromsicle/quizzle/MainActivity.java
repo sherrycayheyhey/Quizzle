@@ -3,8 +3,10 @@ package com.chromsicle.quizzle;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -14,8 +16,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     //create variable for the UI widgets
     private Button falseButton;
     private Button trueButton;
-    private Button nextButton;
+    private ImageButton nextButton;
+    private ImageButton backButton;
     private TextView questionTextView;
+
+    private int currentQuestionIndex = 0;
 
     //array to hold all the questions
     private Question[] questions = new Question[] {
@@ -34,24 +39,61 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         falseButton = findViewById(R.id.false_button);
         trueButton = findViewById(R.id.true_button);
         nextButton = findViewById(R.id.next_button);
+        backButton = findViewById(R.id.back_button);
         questionTextView = findViewById(R.id.answer_text_view);
 
         //set the onClick action of the button, used "this" then added the "implements" above and the onClick override showed up too
         falseButton.setOnClickListener(this);
         trueButton.setOnClickListener(this);
+        nextButton.setOnClickListener(this);
+        backButton.setOnClickListener(this);
     }
 
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.false_button:
-                Toast.makeText(MainActivity.this, "False", Toast.LENGTH_SHORT).show();
+                checkAnswer(false);
                 break;
 
             case R.id.true_button:
-                Toast.makeText(MainActivity.this, "true", Toast.LENGTH_SHORT).show();
+                checkAnswer(true);
+                break;
+
+            case R.id.next_button:
+                //go to the next question
+                //this code makes it so the group of questions will wrap around and never be out of bounds, so cool!
+                currentQuestionIndex = (currentQuestionIndex + 1) % questions.length;
+                updateQuestion();
+                break;
+
+            case R.id.back_button:
+                //go to the previous question
+                // goes back a single question at a time, stops going back if at the 0th question
+                if (currentQuestionIndex > 0) {
+                    currentQuestionIndex = (currentQuestionIndex - 1) % questions.length;
+                    updateQuestion();
+                }
+
                 break;
         }
+    }
 
+    private void updateQuestion() {
+        Log.d("Current", "onClick: " + currentQuestionIndex);
+        questionTextView.setText(questions[currentQuestionIndex].getAnswerResId());
+    }
+
+    private void checkAnswer(boolean userChooseCorrect) {
+        boolean answerIsTrue = questions[currentQuestionIndex].isTrue();
+        int toastMessageId;
+
+        if(userChooseCorrect == answerIsTrue) {
+            toastMessageId = R.string.correct_answer;
+        } else {
+            toastMessageId = R.string.incorrect_answer;
+        }
+
+        Toast.makeText(MainActivity.this, toastMessageId, Toast.LENGTH_SHORT).show();
     }
 }

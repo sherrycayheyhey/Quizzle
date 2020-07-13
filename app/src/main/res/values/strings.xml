@@ -15,5 +15,6 @@
     <string name="test_question_3">LEGO is the best toy ever created.</string>
     <string name="test_question_4">Minecraft is not fun.</string>
     <string name="next_text">next</string>
+    <string name="back_text">back</string>
 
 </resources>

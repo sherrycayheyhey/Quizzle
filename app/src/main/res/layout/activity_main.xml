@@ -9,7 +9,7 @@
     tools:context=".MainActivity">
 
     <ImageView
-        android:src="@drawable/ic_launcher_foreground"
+        android:src="@drawable/brick"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:contentDescription="@string/android_robot_head" />
@@ -44,12 +44,26 @@
 
     </LinearLayout>
 
-    <!-- Just like the alt in html, you should add a contentDescription-->
-    <ImageButton
-        android:id="@+id/next_button"
-        android:src="@android:drawable/ic_media_next"
-        android:contentDescription="@string/next_text"
+    <LinearLayout
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+    <!-- Just like the alt in html, you should add a contentDescription-->
+        <ImageButton
+            android:id="@+id/back_button"
+            android:src="@drawable/baseline_navigate_before_white_18dp"
+            android:contentDescription="@string/back_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <ImageButton
+            android:id="@+id/next_button"
+            android:src="@drawable/baseline_navigate_next_white_18dp"
+            android:contentDescription="@string/next_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+    </LinearLayout>
 
 </LinearLayout>
